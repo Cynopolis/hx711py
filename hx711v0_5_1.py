@@ -32,14 +32,6 @@ class HX711:
         # GAIN must be between 1 and 3. None is an invalid value.
         self.GAIN = None
         self.setGain(gain)
-
-
-        # Think about whether this is necessary.
-        time.sleep(1)
-
-        
-        # Think about whether this is necessary.
-        time.sleep(1)
         
         self.readyCallbackEnabled = False
         self.paramCallback = None
@@ -196,7 +188,7 @@ class HX711:
 
         # Wait until HX711 is ready for us to read a sample.
         while self.isReady() is not True:
-           pass
+            time.sleep(0.1)
 
         # Read three bytes of data from the HX711.
         firstByte  = self.readNextByte()
